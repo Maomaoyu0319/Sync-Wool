@@ -3,7 +3,7 @@
 name: 同步仓库
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */2 * * *'
   workflow_dispatch:
   watch:
     types: started
@@ -24,12 +24,20 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync-xxx
+      - name: sync-Zhiyi
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
           source_repo: "https://github.com/ZhiYi-N/Private-Script.git"
           source_branch: "master"
-          destination_branch: "main"
+          destination_branch: "Zhiyi"
           github_token: ${{ secrets.PAT }}
-      
+
+       - name: sync-Feizao
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/age174/-.git"
+          source_branch: "main"
+          destination_branch: "Feizao"
+          github_token: github_token: ${{ secrets.PAT }}
